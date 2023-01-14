@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string smallestEquivalentString(string s1, string s2, string baseStr) {
+      char count[26];
+        for(int i=0;i<26;i++)
+            count[i]='a'+i;
+        for(int i=0;i<s1.size();i++){
+            char c1=max(count[s1[i]-'a'],count[s2[i]-'a']);
+            char c2=min(count[s1[i]-'a'],count[s2[i]-'a']);
+            for(int i=0;i<26;i++){
+                if(count[i]==c1)
+                count[i]=c2;
+            }
+           
+        }
+         for(int i=0;i<baseStr.size();i++)
+            baseStr[i]=count[baseStr[i]-'a'];
+
+        return baseStr;
+        
+    }
+};
