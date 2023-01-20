@@ -1,0 +1,24 @@
+class Solution {
+public:
+void find(int i,int n,vector<int>&nums,vector<int>&ds,set<vector<int>>&ans){
+    if(i>=n){
+        if(ds.size()>=2) ans.insert(ds);
+        return;
+    }
+    if(!ds.size()||(ds.back()<=nums[i])){
+        ds.push_back(nums[i]);
+        find(i+1,n,nums,ds,ans);
+        ds.pop_back();
+    }
+     find(i+1,n,nums,ds,ans);
+}
+    
+    vector<vector<int>> findSubsequences(vector<int>& nums) {
+         int n = nums.size();
+        vector<int> ds;
+        set<vector<int>> ans;                               
+        
+        find(0,n,nums,ds,ans);
+        return vector(ans.begin(),ans.end());      
+    }
+};
