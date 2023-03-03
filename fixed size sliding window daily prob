@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+       int k=needle.size();
+       int n=haystack.size();
+       string s="";
+       for(int i=0;i<k;i++)
+       s+=haystack[i];
+
+       if(s==needle)
+       return 0;
+
+       for(int i=k;i<haystack.size();i++){
+           s.erase(0,1);
+           s+=haystack[i];
+           if(s==needle)
+           return i-k+1;
+
+       }
+
+       return -1;
+
+    }
+};
